@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "#cba6f7",
+          "foreground_templates": [
+            "{{ if .Root }}lightRed{{ end }}"
+          ],
+          "properties": {
+            "display_host": true
+          },
+          "style": "plain",
+          "template": "<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>\u250c\u2500\u2500(</>rique@{{ .HostName }}<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>)</>",
+          "type": "session"
+        },
+        {
+          "foreground": "yellow",
+          "properties": {
+            "fetch_version": false,
+            "fetch_virtual_env": true
+          },
+          "style": "plain",
+          "template": "<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>-[</>\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }}{{ end }}{{ .Full }}{{ end }}<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>]</>",
+          "type": "python"
+        },
+        {
+          "foreground": "lightWhite",
+          "properties": {
+            "folder_separator_icon": "<#c0c0c0>/</>",
+            "style": "full"
+          },
+          "style": "plain",
+          "template": "<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>-[</>{{ .Path }}<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>]</>",
+          "type": "path"
+        },
+        {
+          "foreground": "white",
+          "style": "plain",
+          "template": "<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>-[</>{{ .HEAD }}<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>]</>",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+"properties": {
+            "always_enabled": true,
+            "style": "round"
+          },
+          "style": "plain",
+          "template": " {{ .FormattedMs }} ",
+          "type": "executiontime"
+        },
+        {
+          "foreground": "#b4befe",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}red{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": " {{ if gt .Code 0 }}\uea76{{else}}\uf42e{{ end }} ",
+          "type": "status"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#cba6f7",
+          "style": "plain",
+          "template": "<{{ if .Root }}#cba6f7{{ else }}#b4befe{{ end }}>\u2514\u2500</>{{ if .Root }}<lightRed>#</>{{ else }}λ{{ end }} ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 3
+}
