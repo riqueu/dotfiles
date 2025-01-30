@@ -7,9 +7,9 @@ return {
   keys = {
     -- spawn and kill tab
     {
-		  key = "w",
-		  mods = "CTRL",
-		  action = act.CloseCurrentPane({ confirm = true }),
+      key = "w",
+      mods = "CTRL",
+      action = act.CloseCurrentPane({ confirm = true }),
     },
     {
       key = 't',
