@@ -49,7 +49,7 @@
       "alignment": "right",
       "segments": [
         {
-"properties": {
+          "properties": {
             "always_enabled": true,
             "style": "round"
           },
