@@ -26,7 +26,7 @@ return {
       }),
     },
 
-    -- toggle fullscreen
+    -- toggle fullscreen (alt + enter also works)
     {
       key = 'F11',
       mods = '',
