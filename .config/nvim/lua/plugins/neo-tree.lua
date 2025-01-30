@@ -14,11 +14,17 @@ return {
         {
           event = "file_open_requested",
           handler = function()
-            -- Auto close Neo-tree when opening a file
             require("neo-tree.command").execute({ action = "close" })
           end,
         },
       },
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = true,
+        },
+      }
     })
   end,
 }
