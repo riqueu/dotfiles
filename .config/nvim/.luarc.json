@@ -2,7 +2,8 @@
     "diagnostics.disable": [
         "undefined-field",
         "undefined-doc-name",
-        "missing-fields"
+        "missing-fields",
+        "iostream"
     ],
     "diagnostics.globals": [
         "vim"
