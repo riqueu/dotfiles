@@ -3,7 +3,6 @@
         "undefined-field",
         "undefined-doc-name",
         "missing-fields",
-        "iostream"
     ],
     "diagnostics.globals": [
         "vim"
