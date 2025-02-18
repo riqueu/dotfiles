@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 return {
-  leader = { key = "Space", mods = "SHIFT" },
+  leader = { key = "F1", mods = "SHIFT" },
 
   keys = {
     -- spawn and kill tab

@@ -8,5 +8,4 @@
 - [neovim](/.config/nvim/)
 - [oh-my-posh](/.config/oh-my-posh/)
 - [fastfetch](/.config/fastfetch/)
-- [komorebi](/.config/komorebi/)
 - [powertoys](/powertoys/)
