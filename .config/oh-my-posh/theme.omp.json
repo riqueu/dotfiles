@@ -46,7 +46,7 @@
       "type": "prompt"
     },
     {
-      "alignment": "right",
+      "alignment": "left",
       "segments": [
         {
           "properties": {
@@ -54,7 +54,7 @@
             "style": "round"
           },
           "style": "plain",
-          "template": " {{ .FormattedMs }} ",
+          "template": " - {{ .FormattedMs }}",
           "type": "executiontime"
         },
         {
@@ -63,7 +63,7 @@
             "{{ if gt .Code 0 }}red{{ end }}"
           ],
           "properties": {
-            "always_enabled": true
+            "always_enabled": true 
           },
           "style": "plain",
           "template": " {{ if gt .Code 0 }}\uea76{{else}}\uf42e{{ end }} ",
