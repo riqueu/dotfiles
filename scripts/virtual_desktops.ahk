@@ -39,7 +39,7 @@ $XButton2:: {
 ; Middle-click taskbar for Task View (Win+Tab)
 $MButton:: {
     if MouseIsOverTaskbar() {
-        Send "#{Tab}"  ; Win+Tab to open Task View
+        Send "{LWin down}{Tab}{LWin up}"  ; Win+Tab to open Task View
     } else {
         Send "{MButton}"
     }
