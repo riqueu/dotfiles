@@ -1,4 +1,4 @@
-# Rique's Dotfiles
+# Rique's Windows 11 Dotfiles (Dual Boot)
 
 ## Base
 - Windows 11 :(
