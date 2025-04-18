@@ -1,14 +1,18 @@
 # Rique's Dotfiles
 
 ## Base
-- Windows 11 :(
-
-#### (Adjust Directories as needed)
+- Arch Linux
+- Hyprland
 
 ## Programs
-- [wezterm](/.config/wezterm/)
+- [hyprland](/.config/hypr/)
+- [waybar](/.config/waybar/)
+- [kitty](/.config/kitty/)
 - [neovim](/.config/nvim/)
-- [oh-my-posh](/.config/oh-my-posh/)
+- [wofi](/.config/wofi/)
+- [swayidle](/.config/swayidle)
+- [swaylock](/.config/swaylock)
+- [swaync](/.config/swaync)
+- [fish](/.config/fish/)
+- [oh-my-fish](/.config/omf/)
 - [fastfetch](/.config/fastfetch/)
-- [powertoys](/powertoys/)
-- [autohotkey](/scripts/) (with [VD.ah2](https://github.com/Viqsi/VD.ah2))
