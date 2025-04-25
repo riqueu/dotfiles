@@ -3,11 +3,13 @@ if status is-interactive
 end
 
 alias ff fastfetch
+alias fetch fastfetch
 alias q exit
 alias :q exit
 alias icat "kitten icat"
 alias cl clear
 alias sp "sudo pacman"
 alias sps "sudo pacman -S"
+alias spu "sudo pacman -Syu"
 alias ys "yay -S"
 alias vi nvim
