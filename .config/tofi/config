@@ -1,0 +1,36 @@
+# Font
+font = JetBrains Mono Nerd Font
+font-size = 14
+hint-font = false
+ascii-input = true
+terminal = kitty
+
+# faster loading but can't render all characters (e.g. emojis)
+# font = /usr/share/fonts/TTF/JetBrainsMonoNerdFontMono-Regular.ttf
+
+# Style
+width = 40%
+height = 30%
+padding-left = 0%
+padding-top = 0%
+border-width = 2
+outline-width = 0
+corner-radius = 6
+# fullscreen:
+#width = 100%
+#height = 100%
+#padding-left = 35%
+#padding-top = 30%
+#border-width = 0
+#outline-width = 0
+#corner-radius = 0
+result-spacing = 14
+num-results = 7
+prompt-text = "> "
+hide-cursor = true
+
+# Colors
+background-color = #000A
+text-color = #FFFFFF
+selection-color = #cba6f7
+border-color = #cba6f7

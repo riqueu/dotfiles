@@ -11,6 +11,15 @@ STEP=255 # 1-255
 
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-step $STEP"
 
+# wofi window config (in %)
+WIDTH=20
+HEIGHT=30
+
+# WOFI STYLES
+CONFIG="$HOME/.config/wofi/config"
+STYLE="$HOME/.config/wofi/style.css"
+COLORS="$HOME/.config/wofi/colors"
+
 # Kill swaybg if running
 if [[ $(pidof swaybg) ]]; then
   pkill swaybg
@@ -65,7 +74,7 @@ fi
 # Start swww daemon if needed
 swww query || swww-daemon
 
-# Generate the menu list for tofi
+# Generate the menu list for wofi
 menu() {
   printf "$RANDOM_PIC_NAME\n"
   for i in "${!PICS[@]}"; do
@@ -78,11 +87,18 @@ menu() {
   done
 }
 
-# Tofi Command
-tofi_command="tofi"
+# Wofi Command
+wofi_command="wofi --show dmenu \
+  --prompt choose... \
+  --conf $CONFIG --style $STYLE --color $COLORS \
+  --width=$WIDTH% --height=$HEIGHT% \
+  --cache-file=/dev/null \
+  --hide-scroll --no-actions \
+  --matching=fuzzy \
+  --columns=2"
 
 main() {
-  choice=$(menu | ${tofi_command})
+  choice=$(menu | ${wofi_command})
 
   # no choice case
   if [[ -z $choice ]]; then return; fi
@@ -103,4 +119,10 @@ main() {
   echo "$selected_pic" > "$CACHE_WALLPAPER"
 }
 
-main
+# Prevent multiple wofi instances
+if pidof wofi >/dev/null; then
+  killall wofi
+  exit 0
+else
+  main
+fi
