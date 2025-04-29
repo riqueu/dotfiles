@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # get user selection via tofi from emoji file.
 chosen=$(cat $HOME/scripts/emoji | tofi | awk '{print $1}')

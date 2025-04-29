@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # calculator history variables
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"

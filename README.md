@@ -9,7 +9,7 @@
 - [waybar](/.config/waybar/)
 - [kitty](/.config/kitty/)
 - [neovim](/.config/nvim/)
-- [wofi](/.config/wofi/)
+- [tofi](/.config/tofi/)
 - [swayidle](/.config/swayidle)
 - [swaylock](/.config/swaylock)
 - [swaync](/.config/swaync)

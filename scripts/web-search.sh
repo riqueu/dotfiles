@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -A URLS
 
@@ -7,10 +7,11 @@ URLS=(
   ["YouTube"]="https://www.youtube.com/results?search_query="
   ["Github"]="https://github.com/search?q="
   ["Arch Wiki"]="https://wiki.archlinux.org/title/"
+  ["Spotify"]="spotify:search:"
 )
 
 # display order
-ORDER=("Google" "YouTube" "Github" "Arch Wiki")
+ORDER=("Google" "Spotify" "YouTube" "Github" "Arch Wiki")
 
 # list for tofi
 gen_list() {
@@ -18,6 +19,10 @@ gen_list() {
     do
       echo "$i"
     done
+}
+
+urlencode() {
+    echo -n "$1" | xxd -plain | sed 's/../& /g' | awk '{for (i=1; i<=NF; i++) printf "%%%s", toupper($i)}'
 }
 
 main() {
@@ -28,6 +33,11 @@ main() {
     #query=$( (echo "") | tofi --prompt-text "$platform > " --require-match=false )
     query=$( (echo "") | tofi --require-match=false )
     
+    # check if spotify to encode
+    if [[ "$platform" == "Spotify" ]]; then
+      query=$(urlencode "$query")
+    fi
+
     if [[ -n "$query" ]]; then
       url=${URLS[$platform]}$query
       xdg-open "$url"
