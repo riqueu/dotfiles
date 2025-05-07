@@ -7,11 +7,12 @@ URLS=(
   ["YouTube"]="https://www.youtube.com/results?search_query="
   ["Github"]="https://github.com/search?q="
   ["Arch Wiki"]="https://wiki.archlinux.org/title/"
+  ["Wikipedia"]="https://en.wikipedia.org/wiki/Special:Search?search="
   ["Spotify"]="spotify:search:"
 )
 
 # display order
-ORDER=("Google" "Spotify" "YouTube" "Github" "Arch Wiki")
+ORDER=("Google" "Wikipedia" "Spotify" "YouTube" "Github" "Arch Wiki")
 
 # list for tofi
 gen_list() {

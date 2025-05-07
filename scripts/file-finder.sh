@@ -19,4 +19,5 @@ selected=$(<"$selfile")
 full_path=$(grep -m1 -F "${selected}::" "$mapfile" | cut -d ':' -f3-)
 
 rm -f "$mapfile" "$selfile"
-thunar "$full_path"
+thunar "$full_path" &
+#kitty "$full_path" &
