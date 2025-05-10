@@ -76,6 +76,10 @@
       "button-text": "󰎟 Clear",
       "clear-all-button": true      
     },
+    "backlight": {
+      "label": "☀",
+      "device": "intel_backlight"
+    },
     "volume": {
       "label": "",
         "show-per-app": true,
@@ -89,6 +93,7 @@
     "notifications",
     "buttons-grid",
     "mpris",
+    "backlight",
     "volume"
   ]
 }

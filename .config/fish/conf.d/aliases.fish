@@ -1,5 +1,5 @@
 alias ff fastfetch
-alias fetch fastfetch
+alias fetch "fastfetch --config examples/17.jsonc"
 alias q exit
 alias :q exit
 alias icat "kitten icat"

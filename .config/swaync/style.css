@@ -276,6 +276,29 @@
   min-height: 1.25rem;
 }
 
+/* Backlight widget */
+.widget-backlight {
+  background-color: rgba(28, 28, 34, 0.35);
+  padding: 8px;
+  margin: 8px;
+  -gtk-outline-radius: 1.159rem;
+  -gtk-outline-radius: 1.159rem;
+}
+
+.widget-backlight trough {
+  /* OnePlus McClaren edition Orange accent */
+  border:unset;
+  background-color: rgba(128, 128, 128, 0.4);
+}
+
+
+.widget-backlight trough slider {
+  /* OnePlus McClaren edition Orange accent */
+  color:unset;
+  background-color: #cba6f7;
+  border-radius: 100%;
+  min-height: 1.25rem;
+}
 
 /* Mpris widget */
 

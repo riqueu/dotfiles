@@ -9,10 +9,11 @@ URLS=(
   ["Arch Wiki"]="https://wiki.archlinux.org/title/"
   ["Wikipedia"]="https://en.wikipedia.org/wiki/Special:Search?search="
   ["Spotify"]="spotify:search:"
+  ["RateYourMusic"]="https://rateyourmusic.com/search?searchterm="
 )
 
 # display order
-ORDER=("Google" "Wikipedia" "Spotify" "YouTube" "Github" "Arch Wiki")
+ORDER=("Google" "RateYourMusic" "Wikipedia" "Spotify" "YouTube" "Github" "Arch Wiki")
 
 # list for tofi
 gen_list() {
