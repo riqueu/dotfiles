@@ -10,10 +10,15 @@ URLS=(
   ["Wikipedia"]="https://en.wikipedia.org/wiki/Special:Search?search="
   ["Spotify"]="spotify:search:"
   ["RateYourMusic"]="https://rateyourmusic.com/search?searchterm="
+  ["Backloggd"]="https://backloggd.com/search/games/"
+  ["Letterboxd"]="https://letterboxd.com/search/"
 )
 
 # display order
-ORDER=("Google" "RateYourMusic" "Wikipedia" "Spotify" "YouTube" "Github" "Arch Wiki")
+ORDER=("Google" "RateYourMusic" "Wikipedia" "Spotify" "YouTube" "Backloggd" "Letterboxd" "Github" "Arch Wiki")
+
+# tofi commands
+tofi_command="tofi --require-match=false"
 
 # list for tofi
 gen_list() {
@@ -33,7 +38,7 @@ main() {
 
   if [[ -n "$platform" ]]; then
     #query=$( (echo "") | tofi --prompt-text "$platform > " --require-match=false )
-    query=$( (echo "") | tofi --require-match=false )
+    query=$( (echo "") | ${tofi_command} )
     
     # check if spotify to encode
     if [[ "$platform" == "Spotify" ]]; then

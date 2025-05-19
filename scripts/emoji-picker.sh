@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+# tofi command
+tofi_command="tofi --width=25%" 
+
 # get user selection via tofi from emoji file.
-chosen=$(cat $HOME/scripts/emoji | tofi | awk '{print $1}')
+chosen=$(cat $HOME/scripts/emoji | ${tofi_command} | awk '{print $1}')
 
 # exit if none chosen.
 [ -z "$chosen" ] && exit

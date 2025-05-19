@@ -4,13 +4,16 @@ set -euo pipefail
 mapfile=$(mktemp)
 selfile=$(mktemp)
 
+# tofi commands
+tofi_command="tofi --font-size=12 --width=50% --height=50%"
+
 # Build "relative::full" map
 find "$1" \( -type f -o -type d \) \
   -printf '/%P::%p\n' > "$mapfile"
 
 # Show only the relative paths tofi-style
 cut -d ':' -f1 "$mapfile" | \
-  tofi --font-size=10 --width=40% --height=50% > "$selfile"
+  ${tofi_command} > "$selfile"
 
 selected=$(<"$selfile")
 [[ -z $selected ]] && { rm -f "$mapfile" "$selfile"; exit 1; }

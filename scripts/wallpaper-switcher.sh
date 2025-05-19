@@ -79,7 +79,7 @@ menu() {
 }
 
 # Tofi Command
-tofi_command="tofi"
+tofi_command="tofi --font-size=12 --width=20% --height=30%"
 
 main() {
   choice=$(menu | ${tofi_command})

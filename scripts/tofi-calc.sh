@@ -7,6 +7,9 @@ tmp_path="$tmp_dir/history"
 is_history_value=false
 max_age_days=10
 
+# tofi commands
+tofi_command="tofi --width=30% --height=50% --font-size=12 --require-match=false"
+
 mkdir -p "$tmp_dir"
 if [ ! -f "$tmp_path" ]; then
     touch "$tmp_path"
@@ -16,7 +19,7 @@ fi
 find "$tmp_dir" -type f -mtime +$max_age_days -delete
 
 # input operation
-operation=$(cat $tmp_path | tofi --require-match=false)
+operation=$(cat $tmp_path | ${tofi_command})
 
 # exit if no operation provided
 if [ -z "$operation" ]; then
