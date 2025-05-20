@@ -78,7 +78,8 @@
     },
     "backlight": {
       "label": "☀",
-      "device": "intel_backlight"
+      "device": "intel_backlight",
+      "min": 10
     },
     "volume": {
       "label": "",
