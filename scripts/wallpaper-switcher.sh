@@ -5,8 +5,8 @@ DIR="$HOME/Pictures/wallpapers"
 
 # Transition config (type swww img --help for more settings)
 FPS=144
-TYPE=any # center / left / etc
-DURATION=0.50
+TYPE=any # center / left / any
+DURATION=0.40
 STEP=255 # 1-255
 
 SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-step $STEP"
