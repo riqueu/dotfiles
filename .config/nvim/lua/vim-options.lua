@@ -12,7 +12,7 @@ local opts = { noremap = true, silent = true }
 
 -- System Clipboard
 vim.keymap.set({ 'n', 'v' }, '<C-c>', '"+y', opts)
-vim.keymap.set({ 'n', 'v' }, '<C-v>', '"+p', opts)
+-- vim.keymap.set({ 'n', 'v' }, '<C-v>', '"+p', opts)
 
 -- Indentation Binds
 vim.keymap.set('n', '<S-Tab>', '<<', opts)
