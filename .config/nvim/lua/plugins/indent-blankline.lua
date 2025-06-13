@@ -5,9 +5,9 @@ return {
   ---@type ibl.config
   opts = {},
   config = function()
-    require('ibl').setup({
+    require("ibl").setup({
       indent = {
-        char = '│',
+        char = "│",
       },
     })
   end,

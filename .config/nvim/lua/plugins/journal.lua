@@ -1,8 +1,7 @@
 return {
   "jakobkhansen/journal.nvim",
   config = function()
-    local template =
-    [[
+    local template = [[
     ---
     layout: post
     title: "%Y %B %d"
@@ -10,12 +9,12 @@ return {
     ---
     ]]
     require("journal").setup({
-      root = '~/Documents/journal',
+      root = "~/Documents/journal",
       journal = {
-        format = '%Y/%m/%Y-%m-%d-post',
+        format = "%Y/%m/%Y-%m-%d-post",
         frequency = { day = 1 },
-        template = template
-      }
+        template = template,
+      },
     })
   end,
 }
