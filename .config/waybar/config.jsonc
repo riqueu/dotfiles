@@ -118,10 +118,10 @@
     "temperature": {
         "interval": 3,
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-        "critical-threshold": 90,
+        "critical-threshold": 95,
         "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""],
+        "format-icons": [""],
 				"on-click": "kitty --app-id gotop gotop",
     },
     "disk#ssd": {
@@ -157,7 +157,7 @@
       "format": "{}°",
       "tooltip": true,
       "interval": 3600,
-      "exec": "wttrbar --nerd --date-format %d/%m --location Rio+De+Janeiro --hide-conditions",
+      "exec": "wttrbar --nerd --date-format %d/%m --location Rio+De+Janeiro --hide-conditions --observation-time",
       "return-type": "json"
     },
     "custom/kernel": {

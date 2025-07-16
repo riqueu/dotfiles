@@ -194,7 +194,7 @@ label:focus {
 }
 
 #mpris {
-    background-color: @base;
+    /*background-color: @base;*/
     color: @text;
 }
 

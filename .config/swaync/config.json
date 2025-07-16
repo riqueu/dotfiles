@@ -78,8 +78,7 @@
     },
     "backlight": {
       "label": "☀",
-      "device": "intel_backlight",
-      "min": 10
+      "device": "acpi_video1"
     },
     "volume": {
       "label": "",
