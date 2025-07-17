@@ -122,7 +122,7 @@
         "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": [""],
-				"on-click": "kitty --app-id gotop gotop",
+				"on-click": "kitty --app-id btop btop",
     },
     "disk#ssd": {
         "interval": 60,

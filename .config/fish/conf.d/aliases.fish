@@ -18,6 +18,12 @@ alias backcam "scrcpy --video-source=camera --video-codec=h265 --camera-size=192
 
 alias susp "systemctl suspend"
 
+alias orch 'pacman -Qdtq | xargs -r pacman -Qi | \
+awk '\''/^Name/ { printf "%s ", $3 }
+/^Version/ { printf "%s\n", $3 }
+/^Description/ { print "    " substr($0, index($0,$2)) "\n" }'\'
+
+
 alias sp "sudo pacman"
 alias sps "sudo pacman -S"
 alias spu "sudo pacman -Syu"
