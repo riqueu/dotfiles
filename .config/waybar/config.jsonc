@@ -6,6 +6,7 @@
     "spacing": 1,
     "modules-left": [
       "hyprland/workspaces",
+      "niri/workspaces",
       "tray",
       "hyprland/window",
     ],
@@ -35,6 +36,15 @@
             "*" : 5
         },
     },
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+
     "bluetooth": {
         "format-on": "bt ",
         "format-off": "bt ({status}) ",
