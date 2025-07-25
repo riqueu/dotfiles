@@ -9,6 +9,7 @@
       "niri/workspaces",
       "tray",
       "hyprland/window",
+      "niri/window",
     ],
     "modules-center": [
 			"clock",
