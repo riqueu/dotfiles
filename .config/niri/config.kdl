@@ -198,7 +198,7 @@ layout {
         urgent-color "#9b0000"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"  
     }
 
     // You can enable drop shadows for windows.
@@ -438,6 +438,18 @@ overview {
 }
 
 gestures {
+    dnd-edge-view-scroll {
+        trigger-width 30
+        delay-ms 100
+        max-speed 1500
+    }
+
+    dnd-edge-workspace-switch {
+        trigger-height 50
+        delay-ms 100
+        max-speed 1500
+    }
+
     // this might be interesting (https://github.com/YaLTeR/niri/issues/1473)
     hot-corners {
         off
@@ -645,6 +657,7 @@ binds {
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
     // This is shifted by 1 because the first workspace is always empty (layout {empty-workspace-above-first})
+    Mod+dead_grave { focus-workspace 1; }
     Mod+0 { focus-workspace 1; }
     Mod+1 { focus-workspace 2; }
     Mod+2 { focus-workspace 3; }
@@ -655,6 +668,7 @@ binds {
     Mod+7 { focus-workspace 8; }
     Mod+8 { focus-workspace 9; }
     Mod+9 { focus-workspace 10; }
+    Mod+Shift+dead_grave { focus-workspace 1; }
     Mod+Shift+0 { move-column-to-workspace 1; }
     Mod+Shift+1 { move-column-to-workspace 2; }
     Mod+Shift+2 { move-column-to-workspace 3; }

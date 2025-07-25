@@ -40,3 +40,7 @@ vim.keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<C-Down>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- Copilot accept suggestion
+vim.keymap.set('i', '<M-CR>', 'copilot#Accept("<CR>")', { expr=true, noremap = true, silent = true })
+vim.g.copilot_no_tab_map = true
