@@ -58,7 +58,7 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    warp-mouse-to-focus
+    //warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
@@ -433,6 +433,21 @@ hotkey-overlay {
     skip-at-startup 
 }
 
+overview {
+    zoom 0.50
+}
+
+gestures {
+    // this might be interesting (https://github.com/YaLTeR/niri/issues/1473)
+    hot-corners {
+        //off
+    }
+}
+
+clipboard {
+    disable-primary
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -458,7 +473,7 @@ binds {
     // LinkedIn (yes)
     Mod+Ctrl+Shift+Alt+L hotkey-overlay-title="Open LinkedIn" { spawn "xdg-open" "https://www.linkedin.com/"; }
     
-    // Menus
+    // Menus #TODO: fuzzel equivalents for other scripts
     Menu hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
     Mod+R hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
     // Mod+V hotkey-overlay-title="Clipboard History" { spawn "sh" "-c" "cliphist list | tofi --font-size=10 --width=40% --height=50% | cliphist decode | wl-copy"; }
@@ -479,18 +494,16 @@ binds {
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    Mod+Shift_R          allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-    Mod+Control_R        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     
     // Brightness controls
     XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "s" "10%+"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "10%-"; }
     
     // Keyboard backlight
-    XF86KbdBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%+"; }
-    XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%-"; }
-    XF86KbdLightOnOff     allow-when-locked=true { spawn "sh" "-c" "[ \"$(brightnessctl -d rgb:kbd_backlight g)\" -gt 0 ] && brightnessctl -d rgb:kbd_backlight s 0% || brightnessctl -d rgb:kbd_backlight s 100%"; }
-    Mod+XF86KbdLightOnOff allow-when-locked=true { spawn "~/scripts/toggle_kb_cycle.sh"; }
+    // XF86KbdBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%+"; }
+    // XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%-"; }
+    // XF86KbdLightOnOff     allow-when-locked=true { spawn "sh" "-c" "[ \"$(brightnessctl -d rgb:kbd_backlight g)\" -gt 0 ] && brightnessctl -d rgb:kbd_backlight s 0% || brightnessctl -d rgb:kbd_backlight s 100%"; }
+    // Mod+XF86KbdLightOnOff allow-when-locked=true { spawn "~/scripts/toggle_kb_cycle.sh"; }
     
     // Media controls
     XF86AudioNext  allow-when-locked=true { spawn "playerctl" "next"; }
@@ -506,15 +519,11 @@ binds {
 
     // Overview toggle
     Mod+Tab repeat=false { toggle-overview; }
-    Mod+O repeat=false { toggle-overview; }
+    Mod+S repeat=false { toggle-overview; }
 
     // Workspace 0 (workspace 10)
     Mod+0 { focus-workspace 10; }
     Mod+Ctrl+0 { move-column-to-workspace 10; }
-    
-    // Special workspace (scratchpad equivalent)
-    // Note: Niri doesn't have scratchpads like Hyprland, using overview instead
-    Mod+S repeat=false { toggle-overview; }
 
     Mod+Q { close-window; }
     Mod+M { quit; }
@@ -527,10 +536,10 @@ binds {
     // Color Picker & Text Extract
     Mod+Shift+C { spawn "sh" "-c" "hyprpicker | wl-copy"; }
     Mod+Shift+T { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tesseract stdin stdout | wl-copy"; }
+    
+    // Motions (TODO: Switch to vim-like motions)
 
     Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
@@ -538,8 +547,8 @@ binds {
     Mod+L     { focus-column-right; }
 
     Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Down  { move-window-down; }
-    Mod+Ctrl+Up    { move-window-up; }
+    //Mod+Ctrl+Down  { move-window-down; }
+    //Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
     // Mod+Ctrl+H     { move-column-left; }
     // Mod+Ctrl+J     { move-window-down; }
@@ -557,20 +566,22 @@ binds {
     Mod+End  { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
+    
+    // Monitor stuff (not really using)
 
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
+    // Mod+Shift+Left  { focus-monitor-left; }
+    // Mod+Shift+Down  { focus-monitor-down; }
+    // Mod+Shift+Up    { focus-monitor-up; }
+    // Mod+Shift+Right { focus-monitor-right; }
     // Mod+Shift+H     { focus-monitor-left; }
     // Mod+Shift+J     { focus-monitor-down; }
     // Mod+Shift+K     { focus-monitor-up; }
     // Mod+Shift+L     { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    // Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    // Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    // Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    // Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
     // Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
     // Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
     // Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
@@ -584,14 +595,14 @@ binds {
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
+    Mod+Down       { focus-window-or-workspace-down; }
+    Mod+Up         { focus-window-or-workspace-up; }
+    Mod+U               { focus-workspace-down; }
+    Mod+I               { focus-workspace-up; }
+    Mod+Ctrl+Shift+Down { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+Shift+Up   { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+U          { move-column-to-workspace-down; }
+    Mod+Ctrl+I          { move-column-to-workspace-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }

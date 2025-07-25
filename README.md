@@ -2,14 +2,14 @@
 
 ## Base
 - Arch Linux
-- Hyprland
+- Hyprland/niri
 
 ## Programs
-- [hyprland](/.config/hypr/)
+- [hyprland](/.config/hypr/)/[niri](/.config/niri/)
 - [waybar](/.config/waybar/)
 - [kitty](/.config/kitty/)
 - [neovim](/.config/nvim/)
-- [tofi](/.config/tofi/)
+- [tofi](/.config/tofi/)/[fuzzel](/.config/fuzzel/)
 - [swayidle](/.config/swayidle)
 - [swaylock](/.config/swaylock)
 - [swaync](/.config/swaync)
