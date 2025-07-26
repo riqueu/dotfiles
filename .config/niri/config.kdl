@@ -41,15 +41,11 @@ input {
 // `niri msg outputs` to see available outputs
 output "eDP-1" {
     // off
-
-    // `niri msg outputs` format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    mode "1920x1080@144"
-
+    mode "1920x1080@144.000"
     scale 1.0
 
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
-
     // Position of the output in the global coordinate space (for multi-monitor setups).
     position x=1280 y=0
 }
@@ -132,7 +128,7 @@ spawn-at-startup "wl-paste --type image --watch cliphist store"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 
 // swayidle (for swaylock)
-spawn-at-startup "swayidle -w timeout 600 'swaylock -f' timeout 610 'niri msg action power-off-monitors' before-sleep 'swaylock -f'"
+spawn-at-startup "swayidle" "-w" "timeout" "610" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
 
 animations {
     //off
@@ -234,10 +230,19 @@ clipboard {
     disable-primary
 }
 
-// corner on all windows
+// all windows
 window-rule {
     geometry-corner-radius 6
     clip-to-geometry true
+
+    draw-border-with-background false
+    opacity 0.98
+}
+
+// opacity on inactive windows
+window-rule {
+    match is-active=false
+    opacity 0.94
 }
 
 // Firefox picture-in-picture player as floating by default
@@ -364,6 +369,7 @@ binds {
     // Color Picker & Text Extract
     Mod+Shift+C { spawn "sh" "-c" "hyprpicker | wl-copy"; }
     Mod+Shift+T { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tesseract stdin stdout | wl-copy"; }
+
     // Menus #TODO: fuzzel equivalents for other scripts
     Menu hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
     Mod+R hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
@@ -528,5 +534,4 @@ binds {
     // XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%-"; }
     // XF86KbdLightOnOff     allow-when-locked=true { spawn "sh" "-c" "[ \"$(brightnessctl -d rgb:kbd_backlight g)\" -gt 0 ] && brightnessctl -d rgb:kbd_backlight s 0% || brightnessctl -d rgb:kbd_backlight s 100%"; }
     // Mod+XF86KbdLightOnOff allow-when-locked=true { spawn "~/scripts/toggle_kb_cycle.sh"; }
-    
 }
