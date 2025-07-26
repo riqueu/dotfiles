@@ -121,8 +121,8 @@ spawn-at-startup "blueman-applet" // run systemctl start bluetooth to use it
 spawn-at-startup "nm-applet --indicator"
 
 // clipboard manager
-spawn-at-startup "wl-paste --type text --watch cliphist store"
-spawn-at-startup "wl-paste --type image --watch cliphist store"
+spawn-at-startup "sh" "-c" "wl-paste --type text --watch cliphist store"
+spawn-at-startup "sh" "-c" "wl-paste --type image --watch cliphist store"
 
 // poolkit authentication agent
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
@@ -373,7 +373,7 @@ binds {
     // Menus #TODO: fuzzel equivalents for other scripts
     Menu hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
     Mod+R hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
-    // Mod+V hotkey-overlay-title="Clipboard History" { spawn "sh" "-c" "cliphist list | tofi --font-size=10 --width=40% --height=50% | cliphist decode | wl-copy"; }
+    Mod+V hotkey-overlay-title="Clipboard History" { spawn "sh" "-c" "cliphist list | fuzzel --dmenu --config ~/.config/fuzzel/fuzzel-clipboard.ini | cliphist decode | wl-copy"; }
     // Mod+C hotkey-overlay-title="Calculator" { spawn "~/scripts/tofi-calc.sh"; }
     // Mod+W hotkey-overlay-title="Random Wallpaper" { spawn "~/scripts/wallpaper-switcher.sh" "rand"; }
     // Mod+Shift+E hotkey-overlay-title="Emoji Picker" { spawn "~/scripts/emoji-picker.sh"; }
