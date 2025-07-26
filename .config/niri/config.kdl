@@ -370,18 +370,17 @@ binds {
     Mod+Shift+C { spawn "sh" "-c" "hyprpicker | wl-copy"; }
     Mod+Shift+T { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tesseract stdin stdout | wl-copy"; }
 
-    // Menus #TODO: fuzzel equivalents for other scripts
+    // Menus
     Menu hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
     Mod+R hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
-    Mod+V hotkey-overlay-title="Clipboard History" { spawn "sh" "-c" "cliphist list | fuzzel --dmenu --config ~/.config/fuzzel/fuzzel-clipboard.ini | cliphist decode | wl-copy"; }
-    // Mod+C hotkey-overlay-title="Calculator" { spawn "~/scripts/tofi-calc.sh"; }
-    // Mod+W hotkey-overlay-title="Random Wallpaper" { spawn "~/scripts/wallpaper-switcher.sh" "rand"; }
-    // Mod+Shift+E hotkey-overlay-title="Emoji Picker" { spawn "~/scripts/emoji-picker.sh"; }
-    // Mod+Shift+R hotkey-overlay-title="Web Search" { spawn "~/scripts/web-search.sh"; }
-    // Mod+Shift+W hotkey-overlay-title="Wallpaper Switcher" { spawn "~/scripts/wallpaper-switcher.sh"; }
-    // Mod+Shift+K hotkey-overlay-title="File Finder" { spawn "~/scripts/file-finder.sh" "~/Documents"; }
-    // Mod+Shift+O hotkey-overlay-title="Kill Tofi" { spawn "killall" "tofi-drun" "tofi"; }
-    
+    Mod+V hotkey-overlay-title="Clipboard History" { spawn "sh" "-c" "cliphist list | fuzzel --dmenu --width=80 --horizontal-pad=8 | cliphist decode | wl-copy"; }
+    Mod+C hotkey-overlay-title="Calculator" { spawn "~/scripts/fuzzel/calc.sh"; }
+    Mod+W hotkey-overlay-title="Random Wallpaper" { spawn "~/scripts/fuzzel/wallpaper-switcher.sh" "rand"; }
+    Mod+Shift+E hotkey-overlay-title="Emoji Picker" { spawn "~/scripts/fuzzel/emoji-picker.sh"; }
+    Mod+Shift+R hotkey-overlay-title="Web Search" { spawn "~/scripts/fuzzel/web-search.sh"; }
+    Mod+Shift+W hotkey-overlay-title="Wallpaper Switcher" { spawn "~/scripts/fuzzel/wallpaper-switcher.sh"; }
+    Mod+Shift+K hotkey-overlay-title="File Finder" { spawn "sh" "-c" "~/scripts/fuzzel/file-finder.sh ~/Documents"; }
+
     // Motions (TODO: Switch to vim-like motions)
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-or-workspace-down; }
