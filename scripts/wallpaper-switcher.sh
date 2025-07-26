@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# get current desktop environment
+case "$XDG_CURRENT_DESKTOP" in
+    "Hyprland")
+        # tofi command with desired sizing
+        launcher_command="tofi --font-size=12 --width=20% --height=30% --require-match=false"
+        ;;
+    "niri" | *)
+        launcher_command="fuzzel --dmenu"
+        ;;
+esac
+
 # WALLPAPERS PATH
 DIR="$HOME/Pictures/wallpapers"
 
@@ -65,7 +76,7 @@ fi
 # Start swww daemon if needed
 swww query || swww-daemon
 
-# Generate the menu list for fuzzel
+# Generate the menu list for the launcher
 menu() {
   printf "$RANDOM_PIC_NAME\n"
   for i in "${!PICS[@]}"; do
@@ -78,11 +89,8 @@ menu() {
   done
 }
 
-# Fuzzel Command
-fuzzel_command="fuzzel --dmenu"
-
 main() {
-  choice=$(menu | ${fuzzel_command})
+  choice=$(menu | ${launcher_command})
 
   # no choice case
   if [[ -z $choice ]]; then return; fi

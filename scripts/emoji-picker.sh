@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
-fuzzel_command="fuzzel --dmenu"
+# launcher based on de
+case "$XDG_CURRENT_DESKTOP" in
+    "Hyprland")
+        launcher_command="tofi --width=25%"
+        ;;
+    "niri" | *)
+        launcher_command="fuzzel --dmenu"
+        ;;
+esac
 
-# get selected emoji via fuzzel from emoji file
-chosen=$(cat "$HOME/scripts/emoji" | ${fuzzel_command} | awk '{print $1}')
+# get user selection via launcher from emoji file
+chosen=$(cat "$HOME/scripts/emoji" | ${launcher_command} | awk '{print $1}')
 
-# no emoji chosen, exit the script
+# exit if no emoji was chosen
 [ -z "$chosen" ] && exit
 
 # if you run this command with an argument, it will automatically insert the
