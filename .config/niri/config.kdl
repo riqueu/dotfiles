@@ -2,7 +2,7 @@ input {
     keyboard {
         xkb {
             layout "us(intl)"
-            options "grp:win_space_toggle,ctrl:nocaps"
+            options "grp:win_space_toggle"
         }
 
         numlock
