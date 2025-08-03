@@ -62,13 +62,13 @@ main() {
 
     case "$platform" in
       "Backloggd")
-        search_url="${URLS[$platform]}${encoded_query}"
+        search_url="https://backloggd.com/search/results.turbo_stream?query=${encoded_query}&type=games"
         relative_path=$(curl -s "$search_url" | grep -A 2 'game-name' | grep -o -m 1 'href="[^"]*"' | sed 's/href="\([^"]*\)"/\1/')
         
         if [[ -n "$relative_path" ]]; then
           url="https://backloggd.com${relative_path}"
         else
-          url="$search_url"
+          url="${URLS[$platform]}${encoded_query}"
         fi
         ;;
 

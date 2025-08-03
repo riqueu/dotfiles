@@ -1,12 +1,12 @@
 @import url("./colors.css");
 
 #workspaces button.empty:not(.active) { /* hide empty workspaces */
-  margin-left: -10px;
-  margin-right: -16px;
-  padding: 0px;
-  color: transparent;
-  background-color: transparent;
-  border: none;
+    margin-left: -14px;
+    margin-right: -16px;
+    padding: 0px;
+    color: transparent;
+    background-color: transparent;
+    border: none;
 }
 
 * {
