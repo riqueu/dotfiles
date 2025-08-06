@@ -8,15 +8,18 @@ case "$XDG_CURRENT_DESKTOP" in
         ;;
     "niri" | *)
         launcher="fuzzel"
-        launcher_command="$launcher --dmenu --lines=10"
+        launcher_command="$launcher --dmenu --lines=13"
         ;;
 esac
 
 declare -A URLS
 
 URLS=(
+    ["DuckDuckGo"]="https://duckduckgo.com/?q="
     ["Google"]="https://www.google.com/search?q="
     ["YouTube"]="https://www.youtube.com/results?search_query="
+    ["Maps"]="https://www.google.com/maps/search/"
+    ["Images"]="https://www.google.com/search?tbm=isch&q="
     ["Github"]="https://github.com/search?q="
     ["Arch Wiki"]="https://wiki.archlinux.org/title/"
     ["Wikipedia"]="https://en.wikipedia.org/wiki/Special:Search?search="
@@ -27,7 +30,7 @@ URLS=(
 )
 
 # display order
-ORDER=("Google" "RateYourMusic" "Wikipedia" "Spotify" "YouTube" "Backloggd" "Letterboxd" "Github" "Arch Wiki")
+ORDER=("DuckDuckGo" "Google" "Maps" "Images" "RateYourMusic" "Wikipedia" "Spotify" "YouTube" "Backloggd" "Letterboxd" "Github" "Arch Wiki")
 
 # list for the launcher
 gen_list() {
