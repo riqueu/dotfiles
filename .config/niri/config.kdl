@@ -46,7 +46,16 @@ output "eDP-1" {
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
     // global coordinate space (multi-monitor setups).
-    position x=1280 y=0
+    position x=1280 y=1080
+}
+
+/- output "HDMI-A-3" {
+  mode "1920x1080@59.939"
+  scale 1.0
+
+  transform "normal"
+
+  position x=1280 y=0
 }
 
 layout {
@@ -323,7 +332,7 @@ binds {
     Mod+Shift+D { switch-focus-between-floating-and-tiling; }
     
     // Toggle tabbed column display mode
-    Mod+Ctrl+W { toggle-column-tabbed-display; }
+    Mod+W { toggle-column-tabbed-display; }
 
     // column management
     Mod+BracketLeft  { consume-or-expel-window-left; }
@@ -345,8 +354,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
     
     // window position management
-    Mod+Ctrl+C { center-column; }
-    Mod+Ctrl+Shift+C { center-visible-columns; }
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
 
     // LinkedIn (yes)
     Mod+Ctrl+Shift+Alt+L hotkey-overlay-title="Open LinkedIn" { spawn "xdg-open" "https://www.linkedin.com/"; }
@@ -366,15 +375,15 @@ binds {
     // Mod+Print { spawn "sh" "-c" "grimblast --freeze save area - | swappy -f -"; }
     
     // Color Picker & Text Extract
-    Mod+Shift+C { spawn "sh" "-c" "hyprpicker | wl-copy"; }
-    Mod+Shift+T { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tesseract stdin stdout | wl-copy"; }
+    Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "sh" "-c" "hyprpicker | wl-copy"; }
+    Mod+Shift+T hotkey-overlay-title="Text Extractor" { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tesseract stdin stdout | wl-copy"; }
 
     // Menus
     Menu hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
     Mod+R hotkey-overlay-title="Application Launcher" { spawn "fuzzel"; }
     Mod+V hotkey-overlay-title="Clipboard History" { spawn "sh" "-c" "cliphist list | fuzzel --dmenu --width=80 --horizontal-pad=8 | cliphist decode | wl-copy"; }
-    Mod+C hotkey-overlay-title="Calculator" { spawn "~/scripts/calc.sh"; }
-    Mod+W hotkey-overlay-title="Random Wallpaper" { spawn "~/scripts/wallpaper-switcher.sh" "rand"; }
+    Mod+Ctrl+Shift+C hotkey-overlay-title="Calculator" { spawn "~/scripts/calc.sh"; }
+    Mod+Ctrl+W hotkey-overlay-title="Random Wallpaper" { spawn "~/scripts/wallpaper-switcher.sh" "rand"; }
     Mod+Ctrl+Shift+E hotkey-overlay-title="Emoji Picker" { spawn "~/scripts/emoji-picker.sh"; }
     Mod+Shift+R hotkey-overlay-title="Web Search" { spawn "~/scripts/web-search.sh"; }
     Mod+Shift+W hotkey-overlay-title="Wallpaper Switcher" { spawn "~/scripts/wallpaper-switcher.sh"; }
@@ -448,8 +457,8 @@ binds {
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
     // Touchpad scroll binds
-    Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
-    Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+    Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
 
     // This is shifted by 1 because the first workspace is always empty (layout {empty-workspace-above-first})
     Mod+dead_grave { focus-workspace 1; }
@@ -463,7 +472,7 @@ binds {
     Mod+7 { focus-workspace 8; }
     Mod+8 { focus-workspace 9; }
     Mod+9 { focus-workspace 10; }
-    Mod+Shift+dead_grave { focus-workspace 1; }
+    Mod+Shift+dead_grave { move-column-to-workspace 1; }
     Mod+Shift+0 { move-column-to-workspace 1; }
     Mod+Shift+1 { move-column-to-workspace 2; }
     Mod+Shift+2 { move-column-to-workspace 3; }
