@@ -49,8 +49,8 @@ output "eDP-1" {
     position x=0 y=1080
 }
 
-/- output "HDMI-A-3" {
-  mode "1920x1080@59.939"
+output "HDMI-A-3" {
+  mode "1360x768@60.015"
   scale 1.0
 
   transform "normal"
