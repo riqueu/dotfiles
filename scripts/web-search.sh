@@ -23,14 +23,15 @@ URLS=(
     ["Github"]="https://github.com/search?q="
     ["Arch Wiki"]="https://wiki.archlinux.org/title/"
     ["Wikipedia"]="https://en.wikipedia.org/wiki/Special:Search?search="
-    ["Spotify"]="spotify:search:"
+    #["Spotify"]="spotify:search:"
     ["RateYourMusic"]="https://rateyourmusic.com/search?searchterm="
     ["Backloggd"]="https://backloggd.com/search/games/"
     ["Letterboxd"]="https://letterboxd.com/search/"
+    ["ProtonDB"]="https://www.protondb.com/search?q="
 )
 
 # display order
-ORDER=("DuckDuckGo" "Google" "Maps" "Images" "RateYourMusic" "Wikipedia" "Spotify" "YouTube" "Backloggd" "Letterboxd" "Github" "Arch Wiki")
+ORDER=("DuckDuckGo" "Google" "Maps" "Images" "RateYourMusic" "Wikipedia" "YouTube" "Backloggd" "Letterboxd" "Github" "Arch Wiki" "ProtonDB")
 
 # list for the launcher
 gen_list() {
@@ -87,9 +88,9 @@ main() {
         fi
         ;;
         
-      "Spotify")
-        url="${URLS[$platform]}${encoded_query}"
-        ;;
+      #"Spotify")
+      #  url="${URLS[$platform]}${encoded_query}"
+      #  ;;
 
       *)
         url="${URLS[$platform]}${encoded_query}"

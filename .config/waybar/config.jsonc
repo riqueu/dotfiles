@@ -191,7 +191,8 @@
             "portable": "",
             "car": "",
         },
-        "on-click": "pgrep -x pulsemixer 2>&1 && killall pulsemixer || kitty --app-id pulsemixer pulsemixer"
+        "on-click": "pavucontrol"
+        // "on-click": "pgrep -x pulsemixer 2>&1 && killall pulsemixer || kitty --app-id pulsemixer pulsemixer"
     },
     "custom/notification": {
       "tooltip": true,
