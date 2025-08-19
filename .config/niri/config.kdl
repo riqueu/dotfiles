@@ -266,8 +266,10 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^Thunar$"#
+    match app-id=r#"^thunar$"#
     open-floating true
+    default-column-width { proportion 0.52; }
+    default-window-height { proportion 0.75; }
 }
 
 // steam rules
