@@ -96,7 +96,7 @@ layout {
     }
 
     shadow {
-        on
+        // on
         // draw-behind-window true
         softness 20
         spread 2
@@ -140,7 +140,7 @@ spawn-at-startup "swayidle" "-w" "timeout" "610" "niri msg action power-off-moni
 
 animations {
     //off
-    //slowdown 3.0
+    slowdown 0.80
 
     // Individual animations.
     workspace-switch {
@@ -194,7 +194,6 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 
     QT_QPA_PLATFORM "wayland"
-    QT_STYLE_OVERRIDE "kvantum"
     QT_QPA_PLATFORMTHEME "qt5ct"
 
     DISPLAY ":0"
@@ -244,13 +243,13 @@ window-rule {
     clip-to-geometry true
 
     draw-border-with-background false
-    opacity 0.98
+    opacity 1.00
 }
 
 // opacity on inactive windows
 window-rule {
     match is-active=false
-    opacity 0.94
+    opacity 0.95
 }
 
 // Firefox picture-in-picture player as floating by default
@@ -485,6 +484,7 @@ binds {
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
     XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "s" "10%+"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "10%-"; }
     XF86AudioNext  allow-when-locked=true { spawn "playerctl" "next"; }

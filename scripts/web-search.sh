@@ -8,7 +8,7 @@ case "$XDG_CURRENT_DESKTOP" in
         ;;
     "niri" | *)
         launcher="fuzzel"
-        launcher_command="$launcher --dmenu --lines=13"
+        launcher_command="$launcher --dmenu --minimal-lines"
         ;;
 esac
 
