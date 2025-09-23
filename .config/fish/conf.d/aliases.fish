@@ -6,6 +6,8 @@ alias icat "kitten icat"
 alias cl clear
 alias vi nvim
 
+alias ytdl "yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio'"
+
 alias mirror "wl-mirror eDP-1 & disown"
 
 alias susp "systemctl suspend"
