@@ -1,3 +1,3 @@
 return {
-  "github/copilot.vim", -- run :Copilot setup to setup
+  {"github/copilot.vim", enabled = false} -- run :Copilot setup to setup
 }
