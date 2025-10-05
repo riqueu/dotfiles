@@ -2,14 +2,14 @@
 
 ## Base
 - Arch Linux
-- niri (or Hyprland)
+- niri tiling wayland compositor
 
 ## Programs
-- [niri](/.config/niri/) (alternatively [hyprland](/.config/hypr/))
+- [niri](/.config/niri/)
 - [waybar](/.config/waybar/)
 - [kitty](/.config/kitty/)
 - [neovim](/.config/nvim/)
-- [fuzzel](/.config/fuzzel/) (alternatively [tofi](/.config/tofi/))
+- [fuzzel](/.config/fuzzel/)
 - [swayidle](/.config/swayidle)
 - [swaylock](/.config/swaylock)
 - [swaync](/.config/swaync)
