@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# get desktop environment (i use tofi with hyprland and fuzzel with niri)
-case "$XDG_CURRENT_DESKTOP" in
-    "Hyprland")
-        launcher_command="tofi --font-size=12 --width=50% --height=50%"
-        ;;
-    "niri" | *)
-        launcher_command="fuzzel --dmenu"
-        ;;
-esac
+# launcher command
+launcher_command="fuzzel --dmenu"
 
 # list of relative paths and pipe it directly to the launcher
 selected_path=$(find "$1" \( -type f -o -type d \) \

@@ -1,15 +1,7 @@
 #!/usr/bin/env bash
 
-# get current desktop environment
-case "$XDG_CURRENT_DESKTOP" in
-    "Hyprland")
-        # tofi command with desired sizing
-        launcher_command="tofi --font-size=12 --width=20% --height=30% --require-match=false"
-        ;;
-    "niri" | *)
-        launcher_command="fuzzel --dmenu"
-        ;;
-esac
+# launcher command
+launcher_command="fuzzel --dmenu"
 
 # WALLPAPERS PATH
 DIR="$HOME/Pictures/wallpapers"

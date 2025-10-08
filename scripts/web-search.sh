@@ -1,16 +1,7 @@
 #!/usr/bin/env bash
 
-# check if niri or Hyprland
-case "$XDG_CURRENT_DESKTOP" in
-    "Hyprland")
-        launcher="tofi"
-        launcher_command="$launcher --require-match=false"
-        ;;
-    "niri" | *)
-        launcher="fuzzel"
-        launcher_command="$launcher --dmenu --minimal-lines"
-        ;;
-esac
+# launcher parameters
+launcher_command="fuzzel --dmenu --minimal-lines"
 
 declare -A URLS
 
@@ -23,7 +14,6 @@ URLS=(
     ["Github"]="https://github.com/search?q="
     ["Arch Wiki"]="https://wiki.archlinux.org/title/"
     ["Wikipedia"]="https://en.wikipedia.org/wiki/Special:Search?search="
-    #["Spotify"]="spotify:search:"
     ["RateYourMusic"]="https://rateyourmusic.com/search?searchterm="
     ["Backloggd"]="https://backloggd.com/search/games/"
     ["Letterboxd"]="https://letterboxd.com/search/"
@@ -87,10 +77,6 @@ main() {
           url="$search_url"
         fi
         ;;
-        
-      #"Spotify")
-      #  url="${URLS[$platform]}${encoded_query}"
-      #  ;;
 
       *)
         url="${URLS[$platform]}${encoded_query}"

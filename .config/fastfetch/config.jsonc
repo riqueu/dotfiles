@@ -65,12 +65,12 @@
             "key": "ram            ",
             "keyColor": "33",
         },
-        //{
-        //    "type": "media",
-        //    "format": "{3} - {2}",
-        //    "key": "media          ",
-        //    "keyColor": "33",
-        //},
+        {
+            "type": "media",
+            "format": "{3} - {2}",
+            "key": "media          ",
+            "keyColor": "33",
+        },
         {
             "type": "uptime",
             "key": "uptime         ",

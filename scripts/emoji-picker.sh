@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
 
-# launcher based on de
-case "$XDG_CURRENT_DESKTOP" in
-    "Hyprland")
-        launcher_command="tofi --width=25%"
-        ;;
-    "niri" | *)
-        launcher_command="fuzzel --dmenu"
-        ;;
-esac
+# launcher command
+launcher_command="fuzzel --dmenu"
 
 # get user selection via launcher from emoji file
 chosen=$(cat "$HOME/scripts/emoji" | ${launcher_command} | awk '{print $1}')

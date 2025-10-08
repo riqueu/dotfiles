@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Select the launcher and its command based on the current desktop environment.
-case "$XDG_CURRENT_DESKTOP" in
-    "Hyprland")
-        # tofi command with history-friendly flags
-        launcher_command="tofi --width=30% --height=50% --font-size=12 --require-match=false --prompt-text=calc>"
-        ;;
-    "niri" | *)
-        launcher_command="fuzzel --dmenu --prompt=calc>"
-        ;;
-esac
+# Select Launcher
+launcher_command="fuzzel --dmenu --prompt=calc>"
 
 # Calculator history variables
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
