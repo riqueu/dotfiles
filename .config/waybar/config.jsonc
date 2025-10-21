@@ -5,10 +5,8 @@
     "width": 1920,
     "spacing": 1,
     "modules-left": [
-      "hyprland/workspaces",
       "niri/workspaces",
       "tray",
-      "hyprland/window",
       "niri/window",
     ],
     "modules-center": [
@@ -18,7 +16,7 @@
       //"idle_inhibitor",
       //"custom/kernel",
       //"disk#ssd",
-      "mpris",
+      //"mpris",
       "temperature",
       //"cpu",
       //"memory",
@@ -31,13 +29,6 @@
       "custom/notification",
     ],
     
-    "hyprland/workspaces": {
-        "format": "{name}",
-        "persistent-workspaces": {
-            "*" : 5
-        },
-    },
-
     "niri/workspaces": {
         "format": "{icon}",
         "format-icons": {
