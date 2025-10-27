@@ -124,7 +124,6 @@ spawn-at-startup "waybar"
 spawn-at-startup "sunsetr"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
-spawn-at-startup "swaync"
 spawn-at-startup "blueman-applet" // run systemctl start bluetooth to use it 
 spawn-at-startup "nm-applet --indicator"
 

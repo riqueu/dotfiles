@@ -12,7 +12,6 @@
 - [fuzzel](/.config/fuzzel/)
 - [swayidle](/.config/swayidle)
 - [swaylock](/.config/swaylock)
-- [swaync](/.config/swaync)
 - [fish](/.config/fish/)
 - [oh-my-fish](/.config/omf/)
 - [fastfetch](/.config/fastfetch/)
