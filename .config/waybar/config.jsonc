@@ -52,7 +52,7 @@
       "interval": 0.5,
       "format": "{player_icon} {dynamic}",
       "format-paused": "{status_icon} <i>{dynamic}</i>",
-      "player": "playerctld",
+      "player": "Feishin",
       "max-length": 75,
       "dynamic-order": ["title", "artist"],
       "player-icons": {
@@ -61,7 +61,7 @@
       "status-icons": {
         "paused": "▶"
       },
-      "ignored-players": ["mpd"]
+      "ignored-players": ["mpd", "playerctld"]
     },
     "tray": {
         "icon-size": 13,
