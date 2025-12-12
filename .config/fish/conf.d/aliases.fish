@@ -5,6 +5,7 @@ alias :q exit
 alias icat "kitten icat"
 alias cl clear
 alias vi nvim
+alias op "handlr open"
 
 alias ytdl "yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio'"
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Cycle through RGB spectrum for keyboard backlight
+# https://github.com/wessel-novacustom/clevo-keyboard/
 
 # user to group so we can control the keyboard backlight without sudo
 #sudo groupadd kbdled

@@ -7,6 +7,7 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set number relativenumber")
 vim.g.mapleader = " "
 vim.opt.swapfile = false
+vim.o.undofile = false
 
 local opts = { noremap = true, silent = true }
 

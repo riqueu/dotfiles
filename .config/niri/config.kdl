@@ -1,7 +1,9 @@
 input {
     keyboard {
         xkb {
-            layout "us(intl)"
+            layout "us"
+            variant "intl"
+            // variant "altgr-intl"
             options "grp:win_space_toggle"
         }
 
@@ -363,8 +365,8 @@ binds {
     // Custom keyboard layout binds
     Shift+KP_Divide { spawn "wtype" "-P" "backslash"; }
     Shift+KP_Multiply { spawn "wtype" "-P" "bar"; }
-    dead_acute { spawn "wtype" "-P" "apostrophe"; }
-    Shift+dead_acute { spawn "wtype" "-P" "quotedbl"; }
+    //dead_acute { spawn "wtype" "-P" "apostrophe"; }
+    //Shift+dead_acute { spawn "wtype" "-P" "quotedbl"; }
     
     // Screenshots (niri's built-in)
     Print { screenshot; }
@@ -409,6 +411,17 @@ binds {
     Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
     Mod+Ctrl+L     { move-column-right; }
 
+    // Workspace focus and movement
+    Mod+D               { focus-workspace-down; }
+    Mod+U               { focus-workspace-up; }
+    Mod+Ctrl+D          { move-column-to-workspace-down; }
+    Mod+Ctrl+U          { move-column-to-workspace-up; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+D         { move-workspace-down; }
+    Mod+Shift+U         { move-workspace-up; }
+
     // Monitor stuff (not really using) (you can also do { move-workspace-to-monitor-left; } and so on)
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
@@ -427,17 +440,6 @@ binds {
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    // Workspace focus and movement
-    Mod+D               { focus-workspace-down; }
-    Mod+U               { focus-workspace-up; }
-    Mod+Ctrl+D          { move-column-to-workspace-down; }
-    Mod+Ctrl+U          { move-column-to-workspace-up; }
-
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+D         { move-workspace-down; }
-    Mod+Shift+U         { move-workspace-up; }
 
     // Mouse wheel workspace switching (with cooldown)
     Mod+WheelScrollDown      cooldown-ms=100 { focus-workspace-down; }
@@ -492,8 +494,8 @@ binds {
     XF86AudioPrev  allow-when-locked=true { spawn "playerctl" "previous"; }
     
     // Keyboard backlight (not working for me rn cause rgb:kbd_backlight disappeared)
-    // XF86KbdBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%+"; }
-    // XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%-"; }
-    // XF86KbdLightOnOff     allow-when-locked=true { spawn "sh" "-c" "[ \"$(brightnessctl -d rgb:kbd_backlight g)\" -gt 0 ] && brightnessctl -d rgb:kbd_backlight s 0% || brightnessctl -d rgb:kbd_backlight s 100%"; }
-    // Mod+XF86KbdLightOnOff allow-when-locked=true { spawn "~/scripts/toggle_kb_cycle.sh"; }
+    XF86KbdBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%+"; }
+    XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%-"; }
+    XF86KbdLightOnOff     allow-when-locked=true { spawn "sh" "-c" "[ \"$(brightnessctl -d rgb:kbd_backlight g)\" -gt 0 ] && brightnessctl -d rgb:kbd_backlight s 0% || brightnessctl -d rgb:kbd_backlight s 100%"; }
+    Mod+XF86KbdLightOnOff allow-when-locked=true { spawn "~/scripts/toggle_kb_cycle.sh"; }
 }
