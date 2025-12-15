@@ -1,7 +1,7 @@
 # Rique's Dotfiles
 
 ## Base
-- Arch Linux
+- cachy os
 - niri tiling wayland compositor
 
 ## Programs
@@ -13,5 +13,3 @@
 - [swayidle](/.config/swayidle)
 - [swaylock](/.config/swaylock)
 - [fish](/.config/fish/)
-- [oh-my-fish](/.config/omf/)
-- [fastfetch](/.config/fastfetch/)

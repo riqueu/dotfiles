@@ -9,7 +9,7 @@ alias op "handlr open"
 
 alias ytdl "yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio'"
 
-alias mirror "wl-mirror eDP-1 & disown"
+alias mirr "wl-mirror eDP-1 & disown"
 
 alias susp "systemctl suspend"
 
@@ -22,4 +22,4 @@ awk '\''/^Name/ { printf "%s ", $3 }
 alias sp "sudo pacman"
 alias sps "sudo pacman -S"
 alias spu "sudo pacman -Syu"
-alias ys "yay -S"
+alias pas "paru -S"

@@ -1,9 +1,15 @@
 input {
     keyboard {
         xkb {
-            layout "us"
-            variant "intl"
-            // variant "altgr-intl"
+            // my custom keymap 
+            // (us-intl except acute isn't a dead key)
+            layout "us-no-dead-acute"
+            variant "intl_no_acute_dead"
+            
+            //layout "us"
+            //variant "intl"
+            //variant "altgr-intl"
+            //options "compose:ralt,grp:win_space_toggle"
             options "grp:win_space_toggle"
         }
 
@@ -38,12 +44,16 @@ input {
 
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
     focus-follows-mouse max-scroll-amount="35%"
+    
+    // Enable workspace back & forth switching
+    // workspace-auto-back-and-forth
 }
 
 // `niri msg outputs` to see available outputs
 output "eDP-1" {
     mode "1920x1080@144.000"
-    scale 1.0
+    // mode custom=true "1280x960@144.000"
+    scale 1 // No scaling (use 2 for HiDPI)
 
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
@@ -51,21 +61,13 @@ output "eDP-1" {
     position x=0 y=1080
 }
 
-output "HDMI-A-3" {
-  mode "1360x768@60.015"
-  scale 1.0
-
-  transform "normal"
-
-  position x=0 y=0
-}
 
 layout {
     background-color "transparent"
     gaps 8
 
     center-focused-column "never"
-    
+
     // workspace 1 always empty (so I made Mod+1 go to workspace 2 and so forth, see keybinds)
     empty-workspace-above-first
 
@@ -87,7 +89,7 @@ layout {
         inactive-color "#595959aa"
         urgent-color "#9b0000"
     }
-    
+
     // focus ring but always visible
     border {
         off
@@ -116,28 +118,25 @@ layout {
     }
 }
 
-prefer-no-csd
 
+prefer-no-csd // Disable program decorations
 screenshot-path "~/Pictures/screenshots/%Y-%m-%d %H-%M-%S.png"
 //screenshot-path null
 
-// startup
-spawn-at-startup "waybar"
-spawn-at-startup "sunsetr"
+// STARTUP APPLICATIONS
+spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
+spawn-sh-at-startup "swww-daemon"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "blueman-applet" // run systemctl start bluetooth to use it 
 spawn-at-startup "nm-applet --indicator"
+spawn-sh-at-startup "waybar"
 
 // clipboard manager
 spawn-at-startup "sh" "-c" "wl-paste --type text --watch cliphist store"
 spawn-at-startup "sh" "-c" "wl-paste --type image --watch cliphist store"
 
-// poolkit authentication agent
-spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
-
 // swayidle (for swaylock)
 spawn-at-startup "swayidle" "-w" "timeout" "610" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
+
 
 animations {
     //off
@@ -184,20 +183,24 @@ animations {
     }
 }
 
+
 environment {
     EDITOR "nvim"
+    DISPLAY ":0"
+
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    MOZ_ENABLE_WAYLAND "1"
+
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt5ct"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
 
     LIBVA_DRIVER_NAME "nvidia"
     __GL_VENDOR_LIBRARY_NAME "nvidia"
     __VK_LAYER_NV_optimus "NVIDIA_only"
-
-    MOZ_ENABLE_WAYLAND "1"
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-
-    QT_QPA_PLATFORM "wayland"
-    QT_QPA_PLATFORMTHEME "qt5ct"
-
-    DISPLAY ":0"
 }
 
 cursor {
@@ -208,7 +211,7 @@ cursor {
 }
 
 hotkey-overlay {
-    skip-at-startup 
+    skip-at-startup
 }
 
 overview {
@@ -238,7 +241,8 @@ clipboard {
     disable-primary
 }
 
-// all windows
+// Window Rules
+
 window-rule {
     geometry-corner-radius 6
     clip-to-geometry true
@@ -283,6 +287,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
 /-window-rule {
     match app-id=r#"^steam_app.*$"#
     // one day maybe (https://github.com/YaLTeR/niri/discussions/742)
@@ -297,28 +306,20 @@ window-rule {
     fullscreen-inhibit-idle true
 }
 
-// pulsemixer rules (cant put them floating on the upper right corner)
-/-window-rule {
-    match app-id=r#"^pulsemixer$"#
-    open-floating true
-    open-on-output "current"
-    default-column-width { fixed 500; }
-    default-window-height { fixed 300; }
-}
-
 // Put swww inside the overview backdrop.
 layer-rule {
     match namespace="^swww-daemon$"
     place-within-backdrop true
 }
 
+// KEYBINDS
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
     Mod+E hotkey-overlay-title="Open File Manager" { spawn "thunar"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-f"; }
-    
+
     // Basic commands
     Mod+Tab repeat=false { toggle-overview; }
     Mod+S repeat=false { toggle-overview; }
@@ -332,7 +333,7 @@ binds {
 
     // Move the focused window between the floating and the tiling layout.
     Mod+Shift+I { switch-focus-between-floating-and-tiling; }
-    
+
     // Toggle tabbed column display mode
     Mod+W { toggle-column-tabbed-display; }
 
@@ -341,7 +342,7 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
-    
+
     // window dimension management
     Mod+Ctrl+R { switch-preset-column-width; }
     Mod+Ctrl+Shift+R { switch-preset-window-height; }
@@ -354,20 +355,20 @@ binds {
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
-    
+
     // window position management
     Mod+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
     // LinkedIn (yes)
     Mod+Ctrl+Shift+Alt+L hotkey-overlay-title="Open LinkedIn" { spawn "xdg-open" "https://www.linkedin.com/"; }
-    
+
     // Custom keyboard layout binds
     Shift+KP_Divide { spawn "wtype" "-P" "backslash"; }
     Shift+KP_Multiply { spawn "wtype" "-P" "bar"; }
     //dead_acute { spawn "wtype" "-P" "apostrophe"; }
     //Shift+dead_acute { spawn "wtype" "-P" "quotedbl"; }
-    
+
     // Screenshots (niri's built-in)
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
@@ -375,7 +376,7 @@ binds {
     // Screenshots (w/grimblast instead of niri's built-in screenshot)
     // Print { spawn "grimblast" "--freeze" "copy" "area"; }
     // Mod+Print { spawn "sh" "-c" "grimblast --freeze save area - | swappy -f -"; }
-    
+
     // Color Picker & Text Extract
     Mod+Shift+C hotkey-overlay-title="Color Picker" { spawn "sh" "-c" "hyprpicker | wl-copy"; }
     Mod+Shift+T hotkey-overlay-title="Text Extractor" { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tesseract stdin stdout | wl-copy"; }
@@ -447,7 +448,7 @@ binds {
     Mod+Ctrl+WheelScrollDown cooldown-ms=100 { move-window-down-or-to-workspace-down; }
     Mod+Ctrl+WheelScrollUp   cooldown-ms=100 { move-window-up-or-to-workspace-up; }
 
-    // Horizontal scrolling for columns 
+    // Horizontal scrolling for columns
     Mod+Shift+WheelScrollDown      { focus-column-right; }
     Mod+Shift+WheelScrollUp        { focus-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
@@ -492,7 +493,7 @@ binds {
     XF86AudioPause allow-when-locked=true { spawn "playerctl" "play-pause"; }
     XF86AudioPlay  allow-when-locked=true { spawn "playerctl" "play-pause"; }
     XF86AudioPrev  allow-when-locked=true { spawn "playerctl" "previous"; }
-    
+
     // Keyboard backlight (not working for me rn cause rgb:kbd_backlight disappeared)
     XF86KbdBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%+"; }
     XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-d" "rgb:kbd_backlight" "set" "25%-"; }
