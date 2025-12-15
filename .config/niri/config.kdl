@@ -1,7 +1,8 @@
 input {
     keyboard {
         xkb {
-            // my custom keymap 
+            // my custom keymap (.config/us-no-dead-acute)
+            // (symlink to /usr/share/X11/xkb/symbols/us-no-dead-acute)
             // (us-intl except acute isn't a dead key)
             layout "us-no-dead-acute"
             variant "intl_no_acute_dead"
