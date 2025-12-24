@@ -1,11 +1,12 @@
-alias ff fastfetch
-alias fetch "fastfetch --config none"
+alias ff "fastfetch --config examples/27.jsonc"
+alias fetch "fastfetch --config examples/30.jsonc"
 alias q exit
 alias :q exit
 alias icat "kitten icat"
 alias cl clear
 alias vi nvim
 alias op "handlr open"
+alias lanip "ip route get 1.1.1.1 | sed -n 's/.* src \([0-9.]*\).*/\1/p'"
 
 alias ytdl "yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio'"
 
