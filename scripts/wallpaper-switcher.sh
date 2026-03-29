@@ -6,13 +6,13 @@ launcher_command="fuzzel --dmenu"
 # WALLPAPERS PATH
 DIR="$HOME/Pictures/wallpapers"
 
-# Transition config (type swww img --help for more settings)
+# Transition config (type awww img --help for more settings)
 FPS=144
 TYPE=any # center / left / any
 DURATION=0.40
 STEP=255 # 1-255
 
-SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-step $STEP"
+AWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-step $STEP"
 
 # Kill swaybg if running
 if [[ $(pidof swaybg) ]]; then
@@ -37,12 +37,12 @@ done
 if [[ $# -ge 1 ]]; then
     case "$1" in
         rand)
-            # Ensure swww daemon is running
-            swww query || swww-daemon
+            # Ensure awww daemon is running
+            awww query || awww-daemon
 
             if [ ${#FILTERED_PICS_FULL_PATH[@]} -gt 0 ]; then
                 selected_pic="${FILTERED_PICS_FULL_PATH[$RANDOM % ${#FILTERED_PICS_FULL_PATH[@]}]}"
-                swww img "$selected_pic" $SWWW_PARAMS
+                awww img "$selected_pic" $AWWW_PARAMS
                 echo "$selected_pic" > "$CACHE_WALLPAPER"
                 exit 0
             else
@@ -66,8 +66,8 @@ else
   RANDOM_PIC_NAME="0. No other wallpapers"
 fi
 
-# Start swww daemon if needed
-swww query || swww-daemon
+# Start awww daemon if needed
+awww query || awww-daemon
 
 # Generate the menu list for the launcher
 menu() {
@@ -92,7 +92,7 @@ main() {
   # random choice case
   if [[ "$choice" == "$RANDOM_PIC_NAME" ]]; then
     if [[ -n "$RANDOM_PIC_FULL_PATH" ]]; then
-      swww img "${RANDOM_PIC_FULL_PATH}" $SWWW_PARAMS
+      awww img "${RANDOM_PIC_FULL_PATH}" $AWWW_PARAMS
       echo "${RANDOM_PIC_FULL_PATH}" > "$CACHE_WALLPAPER"
     fi
     return
@@ -101,7 +101,7 @@ main() {
   # specific wallpaper choice (subtract 1 because we started at index 1)
   pic_index=$(( $(echo "$choice" | cut -d. -f1) - 1 ))
   selected_pic="${PICS_FULL_PATH[$pic_index]}"
-  swww img "$selected_pic" $SWWW_PARAMS
+  awww img "$selected_pic" $AWWW_PARAMS
   echo "$selected_pic" > "$CACHE_WALLPAPER"
 }
 
