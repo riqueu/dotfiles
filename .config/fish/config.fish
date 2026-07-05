@@ -11,3 +11,7 @@ status is-interactive; and pyenv init - | source
 function fish_greeting
     # smth smth
 end
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/rique/.local/bin" $PATH

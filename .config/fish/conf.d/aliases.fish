@@ -10,6 +10,9 @@ alias lanip "ip route get 1.1.1.1 | sed -n 's/.* src \([0-9.]*\).*/\1/p'"
 
 alias ytdl "yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio'"
 
+alias cam "mpv --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency --untimed"
+alias camd "mpv --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency"
+
 alias mirr "wl-mirror eDP-1 & disown"
 
 alias susp "systemctl suspend"
