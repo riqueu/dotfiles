@@ -1,0 +1,16 @@
+title: My script
+description: ""
+author: ''
+license: ''
+version: ''
+last_updated: 2026-04-21 01:26:15 UTC
+script_language_version: '1.1'
+script: |
+  $set(_artist,$rreplace($if2(%albumartist%,%artist%),[\\/:*?"<>|],_))
+  $set(_album,$rreplace(%album%,[\\/:*?"<>|],_))
+  $set(_title,$rreplace(%title%,[\\/:*?"<>|],_))
+
+  %_artist%/
+  [$left(%date%,4)] %_album%/
+  $if($gt(%totaldiscs%,1),%discnumber%-,)$num(%tracknumber%,2) - %_title%
+id: 6be412ac-8263-46fa-a158-f96c69fd3856
